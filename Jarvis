@@ -1,0 +1,161 @@
+#import the modules which are needed for jarvis
+import pyttsx3
+import datetime
+import speech_recognition as sr
+import webbrowser
+import wikipedia
+import os
+import calendar
+
+
+
+#pyttsx3 module imports
+engine = pyttsx3.init('sapi5')
+voices =engine.getProperty('voices')
+print(voices[0].id)
+engine.setProperty('voices' , voices[0   ].id)
+
+def speak (audio):
+    engine .say(audio)
+    engine.runAndWait()
+#WISH ME COMMANDS TO THE USER
+def wishme():
+    hour = int(datetime.datetime.now().hour)
+    
+    if hour>=0 and hour<12 :
+        print("GOOD MORNING SIR  \U0001F604")
+        speak("GOOD MORNING  bhaavesh , HAVE A NICE DAY! ")
+       
+
+    
+    elif hour>=12 and hour<18:
+        speak("GOOD AFTERNOON SIR")
+        print("GOOD AFTERNOON SIR \U0001F604")
+        
+    else :
+        speak("GOOD EVENING SIR, HOW CAN I HELP YOU")
+        print("GOOD EVENING SIR \U0001F604")
+        
+    speak("hello sir I AM JAARVIS HOW COULD I HELP YOU SIR ! ") #hello jarvis
+#TAKE COMMAND FROM THE USER   
+def takeCommand():
+    r = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Listening...")
+        r.pause_threshold = 1
+        audio = r.listen(source)
+        
+    try :
+        print("Recognizing...")
+        query = r.recognize_google(audio ,language= 'en=in')
+        print(f"User said: {query}\n")
+        
+    except Exception as e:
+        print("Say this again please...")
+        speak("Say this again please...")
+        return "None"
+    return query
+
+    
+if __name__ == "__main__":
+    wishme()
+    #while True:
+    if 1 :
+        query = takeCommand().lower()
+        
+    #executing any task         
+        if "open youtube" in query:
+            webbrowser.open("youtube.com")
+
+        elif "open google" in query :
+            webbrowser.open("google.com")
+
+        elif "what is today's date and time" in query :
+
+            date = datetime.datetime.now()
+            print("today date and time is :" ,date)
+            dob = datetime.datetime.now()
+            num = dob.month
+            month= calendar.month_name[num]
+            print('Month Number:', num)
+            print('Month full name is:', calendar.month_name[num])
+            strmonth = datetime.datetime.now().strftime("%d- %m - %Y ")
+            strdate = datetime.datetime.now().strftime("%d- %m - %Y ")
+            speak (f"sir today date is {strdate} ")
+            speak(f"sir month name is {month}")
+            speak(f"and month number is {num}")
+        
+        elif "what is date and time " in query :
+            now = datetime.now()
+            current_time = now.strftime("%H:%M:%S")
+            print("Current Time =", current_time)
+            speak(f"sir the time is {now}")
+            
+
+        elif "open code " in query:
+            codePath = "C:\\Users\\bhave\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+            os.startfile(codePath)
+        
+        elif "wikipedia" in query :
+            speak ("searching wikipedia...")
+            query = query.replace("wikipedia" , "")
+            results = wikipedia.summary(query , sentences=2)
+            speak  ("according to wikipedia")
+            print(results)
+            speak(results)
+            
+        elif "open class 12 file" in query :
+            os.startfile("C:\\Users\\bhave\\Downloads\\CLASS XII")
+               
+            
+        elif "cricket live score" in query :
+            webbrowser.open("https://www.cricbuzz.com/")
+            
+        elif "open instagram" in query :
+            webbrowser.open("http://www.instagram.com")        
+            
+        elif "play music" in query :
+            speak("playing music")
+            music_dir = "C:\\Users\\bhave\\Music\\Playlists"
+            songs = os.listdir(music_dir)
+            print(songs)
+            os.startfile(os.path.join(music_dir,songs[0]))
+            
+        elif  "BMI calculator" in query :
+            speak("opening BMI calculator")
+            os.startfile("C:\\Users\\bhave\\Desktop\\bmig.py")
+                
+        elif "open calculator" in query :
+            speak("opening ,calculator")
+            os.startfile("C:\\Users\\bhave\\Desktop\\calcg.py")
+        
+        elif "shutdown the pc" in query:
+            speak("Do you wish to shutdown your computer ? (yes / no)")
+            shutdown = input("Do you wish to shutdown your computer ? (yes / no): ")
+            if shutdown == 'no':
+                pass
+            else:
+                os.system("shutdown /s /t 1")
+        elif "about today's weather " in query:
+            os.startfile("C:\\Users\\bhave\\Desktop\\wea.py")  
+                
+            
+         
+        elif "open game" in query:
+            os.startfile("E:\\cricket 07\\cricket.exe")
+
+                    
+        else :
+            print("THANKS FOR USING JARIVS",("\U0001F600")) 
+            speak("thanks for using jarvis") 
+            hour = int(datetime.datetime.now().hour)
+            if hour >18 :
+                speak ("good night sir") 
+            else:
+                speak("have a nice day sir")
+            
+
+            
+        
+    
+    
