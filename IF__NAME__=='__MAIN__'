@@ -1,0 +1,26 @@
+//calc.py
+def greet(a):
+    print('hello!, bhavesh calc' ,a)
+
+print(__name__)
+
+if __name__=='__main__':
+    greet(1)  #imported from some module if main then directly run the function
+
+
+//new file 
+import calc
+calc.greet(2) #call func from cal.py it call single time
+
+def greet1():
+    print('hello, bhavesh greet1')
+
+//output:
+calc
+hello!, bhavesh calc 2
+
+//-------------------------------------IF__NAME__:-----------------------------------------------------//
+OUTPUT:
+calc
+hello!, bhavesh calc 1
+hello!, bhavesh calc 2
