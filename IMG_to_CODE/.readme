@@ -1,0 +1,49 @@
+🖼️ Image to Code/Text Converter using OCR (Python + Tesseract)
+This project extracts code or text from an image using Tesseract OCR and saves it into a .txt file (e.g., img_converted.txt).
+
+✅ Features
+Extracts code/text from any image (PNG, JPG, etc.)
+
+Automatically saves the result to a .txt file
+
+Works in any Python environment (VS Code, PyCharm, IDLE)
+
+🚀 Installation & Setup
+🔧 1. Install Python Dependencies
+
+pip install pytesseract pillow
+pytesseract is a Python wrapper for Google’s Tesseract-OCR engine
+Pillow is used to handle images
+
+📥 2. Install Tesseract OCR Engine
+🔹 Windows:
+Download installer from:
+https://github.com/UB-Mannheim/tesseract/wiki
+
+Run the installer:
+
+✅ Select English language
+
+✅ Check Add to system PATH
+
+Install to: C:\Program Files\Tesseract-OCR\
+
+Verify it works (in terminal):
+
+
+tesseract --version
+
+🔁 3. Set Path in Python (Only for Windows)
+Add this in your Python script if Tesseract is not in PATH:
+
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+📂 Project Structure
+
+├── image.png               # Image to extract from
+├── img_converted.txt       # Output file (created after run)
+├── ocr_script.py           # Python script to run
+🧪 Usage Example
+
+
+🧠 License
+This project uses Tesseract OCR (Apache 2.0) and is free to use and modify.
